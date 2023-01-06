@@ -200,8 +200,6 @@ npm install --save-dev eslint-plugin-immutable
   });
   ```
 
-````
-
 ### Functions as data
 
 - Functionsd as first class citicens, meaning they can be treated like other types, likes strings, numbers and objects.
@@ -220,7 +218,7 @@ npm install --save-dev eslint-plugin-immutable
   });
 
   const fetchData = DEVELOPMENT ? fetchDataFake : fetchDataReal;
-````
+  ```
 
 - Array of functions
 
@@ -363,3 +361,81 @@ npm install --save-dev eslint-plugin-immutable
     console.log(divideSafe(7, 0));
     console.log(divideSafe(5, 3));
     ```
+
+---
+
+## 3. JavaScript: The Functional parts
+
+### Functional parts
+
+- Built-in functions easy to work towards functional programming, like arrays methods
+- map, filter, reduce and sort
+
+### The spread operator
+
+- spread operator allows us to, sort of, spread the properties of one object inside another.
+- for Objects and arrays
+- it can be used to update properties of an object
+
+### Mapping
+
+- convert each of the individual elements of an array.
+- pass a function into the map built-in funciton
+  map doesnt change the original array. This is not the case for many other built-in functions
+
+  ![Mapping Method](/2022-12-14-LearningFunctionalProgrammingwithJavaScriptES6%2B/Chapter03/Capture03-01%20Mapping.JPG)
+
+### Filtering
+
+- find all of the elements in an array that fot some kind of criteria
+- good example using higher-rder function to filter words with lenght than an specified value.
+
+  ```js
+  const createLengthTest = (minLength) => (word) => word.length > minLength;
+
+  const longWords = words.filter(createLengthTest(5));
+  ```
+
+  ![Filtering Method](/2022-12-14-LearningFunctionalProgrammingwithJavaScriptES6%2B/Chapter03/Capture03-02%20Filtering.JPG)
+
+### Every/some
+
+- Every and some returns a single boolean.
+
+![Every/Some Methods](/2022-12-14-LearningFunctionalProgrammingwithJavaScriptES6%2B/Chapter03/Capture03-03%20Every-Some.JPG)
+
+- In this example, double exclamation mark notation to convert strings into booleans. It works because empty string is falsy
+
+  - [Double Exclamation Mark](https://www.codingem.com/javascript-double-exclamation-operator/#:~:text=In%20JavaScript%2C%20the%20double%20exclamation,%E2%80%9Ctruthy%E2%80%9D%20objects%20become%20true.)
+    In JavaScript, the double exclamation operator converts an Object to Boolean. This happens such that “falsy” objects become false and “truthy” objects become true. For example:
+
+    - !! 0 –> false
+    - !! null –> false
+    - !! undefined –> false
+    - !! 48 –> true
+    - !! “hello” –> true
+    - !! [1, 2, 3] –> true
+
+  ```js
+  const formValues = ["Shaun", "Wassell", "Maine", "developer"];
+  const isNotEmpty = (string) => !!string;
+  const allFieldsFilled = formValues.every(isNotEmpty);
+  ```
+
+### Slicing
+
+- it doesnt take a function as argument
+- slice obtains a subset of the array
+- slice returns a copy (do not modify original array)
+- default arguments for slice, take the whole array
+
+  ![mutating Functions](/2022-12-14-LearningFunctionalProgrammingwithJavaScriptES6%2B/Chapter03/Capture03-04%20Mutating%20Functions.JPG)
+
+- There is a simple workaround to turn mutating functions into non-mutating functions by using slice() and the calling the mutating function
+
+```js
+const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+console.log(numbers.slice().reverse());
+console.log(numbers);
+```
