@@ -439,3 +439,82 @@ const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.log(numbers.slice().reverse());
 console.log(numbers);
 ```
+
+### Sorting
+
+- sorting mutates
+
+  ![sorting function](/2022-12-14-LearningFunctionalProgrammingwithJavaScriptES6%2B/Chapter03/Capture03-05%20Sorting.JPG)
+
+- the return function value of this fucntion for any two elements determines the order in which these elements will appear in relation to each other in the final array
+
+  ![sorting criteria](/2022-12-14-LearningFunctionalProgrammingwithJavaScriptES6%2B/Chapter03/Capture03-06%20Sorting%20Criteria.JPG)
+
+  ```js
+  const mixedUpNumbers = [10, 2, 4, 3, 7, 5, 8, 9, 1, 6];
+
+  const ascending = (a, b) => {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  };
+
+  const descending = (a, b) => {
+    if (a > b) return -1;
+    if (a < b) return 1;
+    return 0;
+  };
+
+  const sortedNumbers = mixedUpNumbers.slice().sort(descending);
+
+  console.log(sortedNumbers);
+  ```
+
+### Reducing
+
+![reducing function](/2022-12-14-LearningFunctionalProgrammingwithJavaScriptES6%2B/Chapter03/Capture03-07%20Reducing.JPG)
+
+```js
+const numbers = [5, 7, 2, 40, 23, 14, 8, 4, 11];
+const product = numbers.reduce((acc, x) => acc + x, 0);
+```
+
+### Combining functions
+
+- script to get the average salary from an object with employees data
+
+  ```js
+  const developers = employees.filter(
+    (employee) => employee.jobTitle === "developer",
+  );
+  const developerSalaries = developers.map((developer) => developer.salary);
+  const totalDeveloperSalaries = developerSalaries.reduce(
+    (acc, x) => acc + x,
+    0,
+  );
+  const averageDeveloperSalary =
+    totalDeveloperSalaries / developerSalaries.length;
+  console.log(averageDeveloperSalary);
+  ```
+
+### Challenge
+
+- recreate map function without using map function
+
+  - my answer (it worked)
+
+  ```js
+  const map = (arr, func) => {
+    const arrayanswer = [];
+    arr.forEach((element) => {
+      arrayanswer.push(func(element));
+    });
+    return arrayanswer;
+  };
+  ```
+
+  - Instructor Solution (Using only reduce and spread)
+
+  ```js
+  const map = (arr, func) => arr.reduce((acc, x) => [...acc, func(x)], []);
+  ```
