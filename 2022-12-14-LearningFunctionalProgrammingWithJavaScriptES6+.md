@@ -518,3 +518,204 @@ const product = numbers.reduce((acc, x) => acc + x, 0);
   ```js
   const map = (arr, func) => arr.reduce((acc, x) => [...acc, func(x)], []);
   ```
+
+---
+
+## Advanced functional Concepts
+
+### Currying and partial application
+
+- when we take a function that has some number of arguments, and we fix some of those arguments to a set value.
+- This gives us a function with less arguments that we had before.
+- we are passing arguments in different times in different parts of the code
+
+  ![partial application](/2022-12-14-LearningFunctionalProgrammingwithJavaScriptES6%2B/Chapter04/Capture04-01%20Partial%20Application.JPG)
+
+- Fixed first argument
+
+  ```js
+  const add = (x, y, z) => x + y + z;
+  const addPartial = (x) => (y, z) => add(x, y, z);
+  const add5 = addPartial(5);
+  const sum = add5(6, 7);
+  console.log(sum);
+  ```
+
+- Fixed first two arguments
+
+  ```js
+  const add = (x, y, z) => x + y + z;
+  const addPartial = (x, y) => (z) => add(x, y, z);
+  const add5and6 = addPartial(5, 6);
+  const sum = add5and6(7);
+  console.log(sum);
+  ```
+
+- passing each value independently (Currying)
+
+  ```js
+  const add = (x, y, z) => x + y + z;
+  const addPartial = (x) => (y) => (z) => add(x, y, z);
+  const add5 = addPartial(5);
+  const add5and6 = add5(6);
+  const sum = add5and6(7);
+  console.log(sum);
+  ```
+
+- Currying without calling each function independently
+  ```js
+  const add = (x, y, z) => x + y + z;
+  const addPartial = (x) => (y) => (z) => add(x, y, z);
+  const sum = addPartial(5)(6)(7);
+  console.log(sum);
+  ```
+
+### Recursion
+
+- a function calls itself
+
+![Recursion](/2022-12-14-LearningFunctionalProgrammingwithJavaScriptES6%2B/Chapter04/Capture04-02%20Recursion.JPG)
+
+- The example will behave like a foor loop without using for loop
+- in recursion we always have to tell our function when to stop
+
+  ```js
+  const countUp = (x, max) => {
+    if (x > max) return;
+    console.log(x);
+    countUp(x + 1, max);
+  };
+
+  countUp(0, 10);
+  ```
+
+### Functions as objects
+
+- it means they (functions) have properties like objects do
+
+  - function.name
+  - function.lenght
+
+    - gives the quantity of arguments expected
+
+  - Functions have properties that are themselves functions:
+
+    - function.toString
+      - prints a string representation of the function
+
+  - function.call
+    - first argument allows to change the value of this keyword
+  - function.apply
+    - we pass the arguments as an array of values
+  - function.bind
+
+    - allows to fix certain arguments (as seen in partial application but neater)
+
+      ```js
+      const add = (x, y, z) => x + y + z;
+      const args = [1, 2, 3];
+      const add1 = add.bind(null, 1);
+      console.log(add1(2, 3));
+      ```
+
+## 5. Code Conversion Challenges
+
+### Challenge Convert Array
+
+```js
+const tallyVotes = (votes) =>
+  votes.reduce(
+    (acc, name) => ({
+      ...acc,
+      [name]: acc[name] ? acc[name] + 1 : 1,
+    }),
+    {},
+  );
+
+console.log(tallyVotes(electionVotes));
+```
+
+### Anagrams
+
+- Install package for words
+
+  ```npm
+  npm install --save -an-array-of-english-words
+  ```
+
+  ```js
+  import words from "an-array-of-english-words";
+
+  const countOccurrences = (arr) =>
+    arr.reduce(
+      (acc, str) => ({
+        ...acc,
+        [str]: acc[str] ? acc[str] + 1 : 1,
+      }),
+      {},
+    );
+
+  const hasSameLetterCount = (word1, word2) => {
+    const word1Count = countOccurrences(word1.split(""));
+    const word2Count = countOccurrences(word2.split(""));
+
+    return (
+      Object.keys(word1Count).length === Object.keys(word2Count).length &&
+      Object.keys(word1Count).every(
+        (letter) => word1Count[letter] === word2Count[letter],
+      )
+    );
+  };
+
+  const findAnagrams = (word, allWords) => {
+    return allWords
+      .filter((entry) => hasSameLetterCount(word, entry))
+      .filter((anagram) => anagram !== word);
+  };
+
+  console.log(findAnagrams("cinema", words));
+  ```
+
+### Error Messages
+
+```js
+const currentInputValues = {
+  firstName: "Shaun", // Must be at least 2 characters
+  lastName: "", // Must be at least than 2 characters
+  zipCode: "12345", // Must be exactly 5 characters
+  state: "", // Must be exactly 2 characters
+};
+
+const inputCriteria = {
+  firstName: [
+    (value) =>
+      value.length >= 2 ? "" : "First name must be at least 2 characters",
+  ],
+  lastName: [
+    (value) =>
+      value.length >= 2 ? "" : "Last name must be at least 2 characters",
+  ],
+  zipCode: [
+    (value) =>
+      value.length === 5 ? "" : "Zip must be exactly 5 characters long",
+  ],
+  state: [
+    (value) =>
+      value.length === 2 ? "" : "State must be exactly 2 characters long",
+  ],
+};
+
+const getErrorMessages = (inputs, criteria) => {
+  return Object.keys(inputs)
+    .reduce(
+      (acc, fieldName) => [
+        ...acc,
+        ...criteria[fieldName].map((test) => test(inputs[fieldName])),
+      ],
+      [],
+    )
+    .filter((message) => message);
+};
+
+console.log(getErrorMessages(currentInputValues, inputCriteria));
+```
