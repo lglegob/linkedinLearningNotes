@@ -1,6 +1,6 @@
 # Learning Functional Programming with JavaScript ES6+
 
-Shaun Wassell
+- Shaun Wassell
 
 ---
 
