@@ -18,4 +18,4 @@ console.log("First key", firstKey);
 const saturdayValues = saturday.values();
 saturdayValues.next();
 const secondValue = saturdayValues.next().value;
-console.log("Second value", secondValue)
+console.log("Second value", secondValue);

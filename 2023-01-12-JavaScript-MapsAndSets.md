@@ -75,3 +75,24 @@ saturday.clear();
 ```
 
 ### Map: Keys and values methods
+
+- iterator: An object which defined a sequence and potentially returns a value upon its termination.
+- with our Map, some of its methods return iterators which allow us to cycle through keys and values
+- keys method
+  - returns an iterator object with the keys in their insertion order.
+- values method
+  - returns an iterator object with the values in their insertion order.
+- these methods ussually are aplied by creating a const with the method, and then another conts using the next method to get the key or value desired.
+```js
+//What is the first key in your saturday Map object?
+const saturdayKeys = saturday.keys();
+const firstKey = saturdayKeys.next().value;
+console.log("First key", firstKey);
+
+//What is the second value in your saturday Map object?
+const saturdayValues = saturday.values();
+saturdayValues.next();
+const secondValue = saturdayValues.next().value;
+console.log("Second value", secondValue)
+```
+
