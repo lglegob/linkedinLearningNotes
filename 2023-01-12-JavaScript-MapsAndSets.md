@@ -1,4 +1,4 @@
-# JavaScript: Maps and setuptest
+# JavaScript: Maps and sets
 
 - Jamie Pittman
 
@@ -60,11 +60,6 @@ const myFirstMap = new Map();
 - Delete Method removes a key-value pair from an existing Map Object
 - Returns True if the key-value pairs was successfully deleted
 - Returns False if it did not exist in the Map()
-
-```js
-
-```
-
 - Clear Method removes all elements from a Map Object
 
 ```js
@@ -83,6 +78,7 @@ saturday.clear();
 - values method
   - returns an iterator object with the values in their insertion order.
 - these methods ussually are aplied by creating a const with the method, and then another conts using the next method to get the key or value desired.
+
 ```js
 //What is the first key in your saturday Map object?
 const saturdayKeys = saturday.keys();
@@ -93,6 +89,39 @@ console.log("First key", firstKey);
 const saturdayValues = saturday.values();
 saturdayValues.next();
 const secondValue = saturdayValues.next().value;
-console.log("Second value", secondValue)
+console.log("Second value", secondValue);
 ```
 
+### Map contents with the entries method
+
+- Returns an iterator object that contains the key-value pairs for each element
+  ```js
+  //What is the third set of entries in your saturday Map object?
+  const saturdayEntries = saturday.entries();
+  saturdayEntries.next();
+  saturdayEntries.next();
+  const thirdEntry = saturdayEntries.next().value;
+  console.log("The third entry in my saturday Map object is: ", thirdEntry);
+  //Returns an array with thr third Object
+  //The third entry in my saturday Map object is:  [ 3, 'watch a movie' ]
+  ```
+
+### Loop over a map with forEach
+
+- Executes a provided cacllback function for each key-value pair in the Map object
+- 4 Optional parameters
+  - value
+  - key
+  - map
+  - thisArg
+  ```js
+  //Using the forEach method, if a key is equal to 12,
+  //console log the value of the key.
+  saturday.forEach((value, key) => {
+    if (key === 12) {
+      console.log(`It's time for ${value}`);
+    }
+  });
+  ```
+
+### Challenge Maps
