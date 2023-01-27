@@ -124,4 +124,34 @@ console.log("Second value", secondValue);
   });
   ```
 
-### Challenge Maps
+## 2. WeakMaps
+
+### What is the WeakMap Object?
+
+- The difference is that keys are weak and can be garbage collected (A way of freeing up memory thta has been allocated to objects that are no longer in use)
+- the process of garbage collection is performed automatically in JS
+
+- How they are the same
+
+  - Both contain key-value pairs
+  - Both allow you to set, get, delete, and check for key-value pairs
+
+- Key differences
+
+  - WeakMap's keys must be objects
+  - WeakMap does not have all of the same methods and property as Map, including the ability to iterate over the object or get its size
+  - Methods available in WeakMap
+    - set
+    - get
+    - has
+    - delete
+
+- Constructor
+
+  ```js
+  const myFisrtWeakMap = new WeakMap();
+  ```
+
+- Description taken from [stackoverflow](https://stackoverflow.com/questions/29413222/what-are-the-actual-uses-of-es6-weakmap#:~:text=WeakMaps%20provide%20a%20way%20to,a%20WeakMap%20can%20be%20applied.)
+  - WeakMaps provide a way to extend objects from the outside without interfering with garbage collection. Whenever you want to extend an object but can't because it is sealed - or from an external source - a WeakMap can be applied.
+  - A WeakMap is a map (dictionary) where the keys are weak - that is, if all references to the key are lost and there are no more references to the value - the value can be garbage collected.
