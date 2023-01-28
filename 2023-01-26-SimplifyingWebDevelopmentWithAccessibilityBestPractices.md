@@ -182,9 +182,16 @@
     - The element has focus and should be visibly focused
 
 - Links have some exclusive pseudo classes
+
   - :link
     - The link target has not yet been visited
   - :visited
     - The link target has been visited
   - :local-link
     - The absolute URL of the current page and link target match
+
+- We often choose between a link and a button based on their looks
+- We should choose based on their function (We can be using the wrong tool for the wrong job)
+- How do we decide if it should be a link or a button?
+  - Is it a Navigation link taking the visitor to a new location in the document or a new document? --> LINK
+  - Is it an interactive element triggering some form of behaviour in the existing context like opening a modal, or closing a modal, or sending a form, or toggling a menu or something similar that doesnt involve navigation? --> BUTTON
