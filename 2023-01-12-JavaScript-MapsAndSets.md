@@ -124,6 +124,8 @@ console.log("Second value", secondValue);
   });
   ```
 
+---
+
 ## 2. WeakMaps
 
 ### What is the WeakMap Object?
@@ -155,3 +157,67 @@ console.log("Second value", secondValue);
 - Description taken from [stackoverflow](https://stackoverflow.com/questions/29413222/what-are-the-actual-uses-of-es6-weakmap#:~:text=WeakMaps%20provide%20a%20way%20to,a%20WeakMap%20can%20be%20applied.)
   - WeakMaps provide a way to extend objects from the outside without interfering with garbage collection. Whenever you want to extend an object but can't because it is sealed - or from an external source - a WeakMap can be applied.
   - A WeakMap is a map (dictionary) where the keys are weak - that is, if all references to the key are lost and there are no more references to the value - the value can be garbage collected.
+
+---
+
+## Sets
+
+### The Set Object Defined
+
+- Collection of unique values
+- No duplicates
+- Set values can be anything
+- Several Methods (add, has, clear, delete, entries, forEach, values)
+- Size property
+
+  ```js
+  const myFirstSet = new Set();
+  ```
+
+### Add values to your set
+
+- Can chain add methods
+
+  ```js
+  const iceCream = new Set();
+  iceCream
+    .add("chocolate")
+    .add("vanilla")
+    .add("coffee")
+    .add("coffee")
+    .add("strawberry")
+    .add("vanilla");
+
+  console.log("Ice Cream Flavor List", iceCream);
+  //Result: Ice Cream Flavor List Set(4) { 'chocolate', 'vanilla', 'coffee', 'strawberry' }
+  ```
+
+### Does set have your value?
+
+- Returns true or false depending on wheter or not a value is contained in a Set object
+
+```js
+const hasMintChocChip = iceCream.has("mint chocolate chip");
+console.log("Does the Set contain Mint Chocolate Chip? ", hasMintChocChip);
+//Result: Does the Set contain Mint Chocolate Chip?  false
+```
+
+### Get your set size
+
+- a property, not a method
+
+  ```js
+  console.log(`Our Set is ${iceCream.size} in size.`);
+  ```
+
+### Delete and clear values in your set
+
+```js
+//Delete vanilla from the iceCream Set.
+iceCream.delete("vanilla");
+console.log("iceCream Set after removing vanilla", iceCream);
+
+//Clear the iceCream Set.
+iceCream.clear();
+console.log("Checking Set size after clearing ", iceCream.size);
+```
