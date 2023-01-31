@@ -195,3 +195,80 @@
 - How do we decide if it should be a link or a button?
   - Is it a Navigation link taking the visitor to a new location in the document or a new document? --> LINK
   - Is it an interactive element triggering some form of behaviour in the existing context like opening a modal, or closing a modal, or sending a form, or toggling a menu or something similar that doesnt involve navigation? --> BUTTON
+
+
+### Links
+
+- in its most basic configuration a link is an anchor tag with an href attribute containing the target URL
+- We can expand its functionality using URL schemes:
+ 
+  - Phone capabilities
+  ```html
+  <a href=“tel:+15558675309”>Call our Store</a>
+  ```  
+  
+  - mail to capabilities
+  ```html
+  <a href=“mailto:store@example.com”>Mail us</a>
+  ``` 
+
+  - download capabilities
+  ```html
+  <a href=“/cheese-menu.pdf” download>See our Menu</a>
+  ``` 
+
+- Anytime you have a link, the screen reader will try to read out everything that sits inside the link.
+
+
+### Buttons
+
+- it doesn’t have default behavior
+- Button behavior is added by hooking them to browser events or using JavaScript
+- Links are often used in place of buttons (wrong)
+- The following code removes all default styling of a button except for the focus state
+
+
+INSERT CODE
+
+- Best practice
+  - Create global styles for all buttons to match design
+  - Use classes to apply custom styles where necessary
+  - Modify and build on default styling rather than full reset
+
+
+### Screen reader-friendly links and buttons
+
+- Examples of when hide content from visual browsers and provide more context for screen readers
+
+![Examples to hide](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture02.png) 
+ 
+  - Read more links
+  - Close modal buttons
+  - Next and previous buttons
+  - Blocks of texts with links inside
+
+
+![read more links effect in screen readers](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture03.png)
+
+- To fix it, add hidden text
+
+![Screen Reader-Only CSS rule](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture04.png)
+
+![Screen Reader-Only example](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture05.png)
+
+
+### Icon links and buttons with SVG
+
+- when we want to display a link or a button using an icon with or without accompanying text
+- Use SVGs for icons. They can be made accesible, and they don’t interfere with assistive technologies the way icon fonts do.
+
+![Example for all escenarios](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture06.png)
+
+
+
+
+
+
+
+
+
