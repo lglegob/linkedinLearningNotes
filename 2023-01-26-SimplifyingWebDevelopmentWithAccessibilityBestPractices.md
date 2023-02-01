@@ -96,7 +96,7 @@
 
 ---
 
-## Hiding and Showing
+## 3. Hiding and Showing
 
 ### Is hiding or showing content a good idea?
 
@@ -138,7 +138,9 @@
 
 ![Double Link Example](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter03/CH03-Capture04.png)
 
-## Semantics and Interactivity
+—--
+
+## 4. Semantics and Interactivity
 
 ### The role of semantic elements
 
@@ -264,11 +266,63 @@ INSERT CODE
 
 ![Example for all escenarios](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture06.png)
 
+—--
+
+## 5. Images, graphics and media
+
+##w images, graphics and media basics
+
+- two categories
+  - Static Assets (images and graphics)
+  - Dynamic Assets (Video and Audio)
+
+- Static Assets
+  - information
+  - link/button
+  - decoration
+
+  - defining the purpose of the assets becomes important when choosing how to markup
 
 
+- Dynamic Assets
+  - information
+  - decoration (not recommended)
+
+- video and audio are not always accesible
+- they require alternative methods for communicating the information within (plain text transcripts)
+
+- advantages for video and audio transcripts
+  - make information accesible to anyone through text
+  - make information searchable, copyable, and auto-translatable
+  - make information indexable for search engines
 
 
+### the img element
+
+- inline replaced element
+- two required attributes
+  - src
+  - alt
+- optional attributes
+  - width
+  - height
+  - loading
+  - sizes
+  - srcset
+
+- <img> global CSS reset
 
 
+INSERT CODE
+
+- Don’t use title attribute (useless)
+ 
+- [alt decisión tree from w3c](https://www.w3.org/WAI/tutorials/images/decision-tree/)
+ 
+- the role of the image can be changed with ARIA roles
+
+ 
+ 
+        
 
 

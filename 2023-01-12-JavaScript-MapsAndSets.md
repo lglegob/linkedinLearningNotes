@@ -221,3 +221,76 @@ console.log("iceCream Set after removing vanilla", iceCream);
 iceCream.clear();
 console.log("Checking Set size after clearing ", iceCream.size);
 ```
+
+### iterate over values in a set
+
+- just like the values method on map, the values method for set also returns an integrator object.
+
+  ```js
+  const values = setObject.values();
+  const firstValue = values.next().value;
+  ``` 
+
+- the example
+  ```js
+  const iceCreamValues = iceCream.values();
+  iceCreamValues.next();
+
+  const secondValue = iceCreamValues.next().value;
+  console.log(“The second value in my Set is: “, secondValue);
+  ```
+
+### iterate over a set with entries
+
+- returns an integrator object that contains an array [array, array] in insertion order. Since set only has values, different than maps.
+ 
+- twice in order to keep the API similar to map.
+
+  ```js
+  const entries = setObject.entries();
+  const firstEntries = entries.next().value;
+  ``` 
+
+- the example
+
+  ```js
+  const iceCreamEntries = iceCream.entries();
+  const firstEntry = iceCreamEntries.next().value;
+  console.log(“The first entry in my iceCream Set is: “, firstEntry)
+  ```
+
+### iterate over your set with forEach
+
+- executed a provided callback function for each value in the Set object
+
+  ```js
+  //Loop through our iceCream Set and if the value does NOT equal ‘vanilla’,
+  //log it in the console.
+  iceCream.forEach((flavor) => {
+      if(flavor !== ‘vanilla’) {
+          console.log(“Non-vanilla flavor: “, flavor)
+      }
+  });
+  ```
+
+---
+
+## Weaksets
+
+### what is?
+
+- the weakest can be garbage collected if there is no other reference to it
+- how they are the same
+  - both store unique values
+  - bot allow you to add, delete, and check values
+- key differences
+  - weakset’s values must be objects
+  - weaksets only have add, has and delete methods
+
+
+### same methods. Different set
+
+- add
+- has
+- delete
+ 
