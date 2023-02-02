@@ -387,3 +387,49 @@
 ![Accessible <svg> Example](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter05/CH05-Capture02.png)
 
 [Creating Accessible SVGs](https://www.deque.com/blog/creating-accessible-svgs/)
+
+### Making embedded videos more accessible
+
+- Embedding comes with some tricky problems for performance, usability and accessibility
+- The embed loads even if the visitor never interacts with it
+- The embed slows down rendering of the page
+- the embed frame I frame can create a keyboard navigation trap where the user can’t escape the embed to get back to the current page
+- SOLUTION:
+  - load the embed only when the user interacts with it
+  - inside the iframe, loads an image with a button on top of it, then if when that button is clicked, the embedded content is loaded 
+  - thanks to sir doc attribute
+  - We are loading just a picture, not the video
+
+  ```html
+  <iframe
+    width=“720”
+    height=“540”
+    src=“https://www.youtube.com/embed/Buw4vOXcr_4”
+    srcdoc=“
+      <style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style>
+      <a href=https://www.youtube.com/embed/Buw4vOXcr_4?autoplay=1>
+        <img 
+          src=https://img.youtube.com/vi/Buw4vOXcr_4/hqdefault.jpg 
+          alt=‘Video: Variable Fonts Explained’>
+        <span>&#x25BA;</span>
+      </a>”
+    frameborder=“0”
+    allow=“accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture”
+    allowfullscreen
+    title=“Variable Fonts Explained”
+    loading=“lazy”
+  ></iframe>
+  ``` 
+
+### Adding transcripts
+
+- If a Web Page contains an audio or video file with information, it should contain a full transcript
+- Transcripts make information:
+  - accessible to anyone through text
+  - searchable, copyable, and auto-translatable
+  - indexable for search engines
+
+- Two options to show transcript
+  - Scrolling
+  - expand button (JavaScript) 
+
