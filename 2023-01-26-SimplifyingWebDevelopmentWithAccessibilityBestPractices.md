@@ -198,29 +198,30 @@
   - Is it a Navigation link taking the visitor to a new location in the document or a new document? --> LINK
   - Is it an interactive element triggering some form of behaviour in the existing context like opening a modal, or closing a modal, or sending a form, or toggling a menu or something similar that doesnt involve navigation? --> BUTTON
 
-
 ### Links
 
 - in its most basic configuration a link is an anchor tag with an href attribute containing the target URL
 - We can expand its functionality using URL schemes:
- 
+
   - Phone capabilities
+
   ```html
-  <a href=“tel:+15558675309”>Call our Store</a>
-  ```  
-  
+  <a href="“tel:+15558675309”">Call our Store</a>
+  ```
+
   - mail to capabilities
+
   ```html
-  <a href=“mailto:store@example.com”>Mail us</a>
-  ``` 
+  <a href="“mailto:store@example.com”">Mail us</a>
+  ```
 
   - download capabilities
+
   ```html
   <a href=“/cheese-menu.pdf” download>See our Menu</a>
-  ``` 
+  ```
 
 - Anytime you have a link, the screen reader will try to read out everything that sits inside the link.
-
 
 ### Buttons
 
@@ -229,26 +230,48 @@
 - Links are often used in place of buttons (wrong)
 - The following code removes all default styling of a button except for the focus state
 
+  ```css
+  button {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    overflow: visible;
+    text-transform: none;
+    -webkit-appearance: button;
+    border: 0;
+    background: none;
+  }
 
-INSERT CODE
+  button:hover {
+    /* Mouse behavior like link */
+    cursor: pointer;
+  }
+
+  button:hover,
+  button:focus,
+  button:active {
+    background: none;
+    border-color: inherit;
+    border-radius: 0;
+  }
+  ```
 
 - Best practice
   - Create global styles for all buttons to match design
   - Use classes to apply custom styles where necessary
   - Modify and build on default styling rather than full reset
 
-
 ### Screen reader-friendly links and buttons
 
 - Examples of when hide content from visual browsers and provide more context for screen readers
 
-![Examples to hide](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture02.png) 
- 
-  - Read more links
-  - Close modal buttons
-  - Next and previous buttons
-  - Blocks of texts with links inside
+![Examples to hide](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture02.png)
 
+- Read more links
+- Close modal buttons
+- Next and previous buttons
+- Blocks of texts with links inside
 
 ![read more links effect in screen readers](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture03.png)
 
@@ -257,7 +280,6 @@ INSERT CODE
 ![Screen Reader-Only CSS rule](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture04.png)
 
 ![Screen Reader-Only example](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter04/CH04-Capture05.png)
-
 
 ### Icon links and buttons with SVG
 
@@ -270,21 +292,23 @@ INSERT CODE
 
 ## 5. Images, graphics and media
 
-##w images, graphics and media basics
+## images, graphics and media basics
 
 - two categories
+
   - Static Assets (images and graphics)
   - Dynamic Assets (Video and Audio)
 
 - Static Assets
+
   - information
   - link/button
   - decoration
 
   - defining the purpose of the assets becomes important when choosing how to markup
 
-
 - Dynamic Assets
+
   - information
   - decoration (not recommended)
 
@@ -296,7 +320,6 @@ INSERT CODE
   - make information searchable, copyable, and auto-translatable
   - make information indexable for search engines
 
-
 ### the img element
 
 - inline replaced element
@@ -304,6 +327,7 @@ INSERT CODE
   - src
   - alt
 - optional attributes
+
   - width
   - height
   - loading
@@ -312,17 +336,54 @@ INSERT CODE
 
 - <img> global CSS reset
 
+  ```css
+  /* Standard */
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 
-INSERT CODE
+  /* Modern CSS Remedy */
+  img {
+    display: block;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+  }
+  ```
 
-- Don’t use title attribute (useless)
- 
+- Don’t use title attribute (pointless information)
+
 - [alt decisión tree from w3c](https://www.w3.org/WAI/tutorials/images/decision-tree/)
- 
+
 - the role of the image can be changed with ARIA roles
 
- 
- 
-        
+### The figure and figcaption elements
 
+- one or more images that include a caption
+- <figure> element wraps around one or moire image elements that can contain an optional figcaption element
 
+![figure element with figcaption](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter05/CH05-Capture01.png)
+
+- When wrapping an image in a container, use a figure (That's what it's for)
+- the only styling a figure introduces is margin, you can easily reset it with:
+
+  ```css
+  figure {
+    margin: 0;
+  }
+  ```
+
+### Accesible SVG
+
+- Can be displayed as regular <img>
+- Can be incorporated in HTML document
+- Can be defined once and used many times
+- Can be styled using CSS
+- Can be made accessible
+- Because an SVG is a standalone web document, which can be embeded into an HTML document, the SVG can contain its own title and description elements.
+
+![Accessible <svg> Example](./2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Chapter05/CH05-Capture02.png)
+
+[Creating Accessible SVGs](https://www.deque.com/blog/creating-accessible-svgs/)
