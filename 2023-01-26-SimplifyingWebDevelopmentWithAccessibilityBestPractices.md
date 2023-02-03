@@ -433,3 +433,51 @@
   - Scrolling
   - expand button (JavaScript) 
 
+
+---
+
+## Practical Examples
+
+- For these examples, check the Screen Reader chrome extension
+
+### Mobile-Friendly navigation menu
+
+- Example combining html, css and js for a friendly navigation menu
+
+[html code](./Ex_Files_Simplifying_Web_Development/06_01/index.html)
+[css code](./Ex_Files_Simplifying_Web_Development/06_01/style.css)
+[js code](./Ex_Files_Simplifying_Web_Development/06_01/script.js)
+
+### Multilevel navigation menu
+
+- really straightforward example with a fully accessible dropdown menu using links for links and buttons for buttons, and this work across mouse users, touch screen users, keyboard users, visual users, and screen reader users
+
+[html code](./Ex_Files_Simplifying_Web_Development/06_02/index.html)
+[css code](./Ex_Files_Simplifying_Web_Development/06_02/style.css)
+[js code](./Ex_Files_Simplifying_Web_Development/06_02/script.js)
+
+### Basic Card
+
+- When we try to make cards that do perfect things for everyone, we will run into issues, where we have to trade a solution for one group for another group
+- In the case of the example, is trading to have the whole card clickable, instead of being able to highlight the inside text.
+- the key component is the CSS with the “after” configuration where the anchor element is extended.
+
+[html code](./Ex_Files_Simplifying_Web_Development/06_03/index.html)
+[css code](./Ex_Files_Simplifying_Web_Development/06_03/style.css)
+
+### Card with internal links
+
+- What about cards with multiple links, or buttons or other interactive elements
+
+[html code](./Ex_Files_Simplifying_Web_Development/06_04/index.html)
+[css code](./Ex_Files_Simplifying_Web_Development/06_04/style.css)
+
+### Date Picker
+
+- used to be difficult to be accessible
+- the input type date field, hooks into whatever dates picker feature is built into the browser and those date picker features have now been migrated into desktop browsers as well 
+- JavaScript code is just adjusting the format of year, month and day
+
+[html code](./Ex_Files_Simplifying_Web_Development/06_05/index.html)
+[css code](./Ex_Files_Simplifying_Web_Development/06_05/style.css)
+[js code](./Ex_Files_Simplifying_Web_Development/06_05/script.js)
