@@ -395,8 +395,9 @@
 - The embed slows down rendering of the page
 - the embed frame I frame can create a keyboard navigation trap where the user can’t escape the embed to get back to the current page
 - SOLUTION:
+
   - load the embed only when the user interacts with it
-  - inside the iframe, loads an image with a button on top of it, then if when that button is clicked, the embedded content is loaded 
+  - inside the iframe, loads an image with a button on top of it, then if when that button is clicked, the embedded content is loaded
   - thanks to sir doc attribute
   - We are loading just a picture, not the video
 
@@ -408,8 +409,8 @@
     srcdoc=“
       <style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style>
       <a href=https://www.youtube.com/embed/Buw4vOXcr_4?autoplay=1>
-        <img 
-          src=https://img.youtube.com/vi/Buw4vOXcr_4/hqdefault.jpg 
+        <img
+          src=https://img.youtube.com/vi/Buw4vOXcr_4/hqdefault.jpg
           alt=‘Video: Variable Fonts Explained’>
         <span>&#x25BA;</span>
       </a>”
@@ -419,20 +420,20 @@
     title=“Variable Fonts Explained”
     loading=“lazy”
   ></iframe>
-  ``` 
+  ```
 
 ### Adding transcripts
 
 - If a Web Page contains an audio or video file with information, it should contain a full transcript
 - Transcripts make information:
+
   - accessible to anyone through text
   - searchable, copyable, and auto-translatable
   - indexable for search engines
 
 - Two options to show transcript
   - Scrolling
-  - expand button (JavaScript) 
-
+  - expand button (JavaScript)
 
 ---
 
@@ -444,17 +445,17 @@
 
 - Example combining html, css and js for a friendly navigation menu
 
-[html code](./Ex_Files_Simplifying_Web_Development/06_01/index.html)
-[css code](./Ex_Files_Simplifying_Web_Development/06_01/style.css)
-[js code](./Ex_Files_Simplifying_Web_Development/06_01/script.js)
+[html code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Ex_Files_Simplifying_Web_Development/06_01/index.html)
+[css code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices//Ex_Files_Simplifying_Web_Development/06_01/style.css)
+[js code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices//Ex_Files_Simplifying_Web_Development/06_01/script.js)
 
 ### Multilevel navigation menu
 
 - really straightforward example with a fully accessible dropdown menu using links for links and buttons for buttons, and this work across mouse users, touch screen users, keyboard users, visual users, and screen reader users
 
-[html code](./Ex_Files_Simplifying_Web_Development/06_02/index.html)
-[css code](./Ex_Files_Simplifying_Web_Development/06_02/style.css)
-[js code](./Ex_Files_Simplifying_Web_Development/06_02/script.js)
+[html code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices//Ex_Files_Simplifying_Web_Development/06_02/index.html)
+[css code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices//Ex_Files_Simplifying_Web_Development/06_02/style.css)
+[js code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices//Ex_Files_Simplifying_Web_Development/06_02/script.js)
 
 ### Basic Card
 
@@ -462,22 +463,57 @@
 - In the case of the example, is trading to have the whole card clickable, instead of being able to highlight the inside text.
 - the key component is the CSS with the “after” configuration where the anchor element is extended.
 
-[html code](./Ex_Files_Simplifying_Web_Development/06_03/index.html)
-[css code](./Ex_Files_Simplifying_Web_Development/06_03/style.css)
+[html code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Ex_Files_Simplifying_Web_Development/06_03/index.html)
+[css code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Ex_Files_Simplifying_Web_Development/06_03/style.css)
 
 ### Card with internal links
 
 - What about cards with multiple links, or buttons or other interactive elements
 
-[html code](./Ex_Files_Simplifying_Web_Development/06_04/index.html)
-[css code](./Ex_Files_Simplifying_Web_Development/06_04/style.css)
+[html code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Ex_Files_Simplifying_Web_Development/06_04/index.html)
+[css code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Ex_Files_Simplifying_Web_Development/06_04/style.css)
 
 ### Date Picker
 
 - used to be difficult to be accessible
-- the input type date field, hooks into whatever dates picker feature is built into the browser and those date picker features have now been migrated into desktop browsers as well 
+- the input type date field, hooks into whatever dates picker feature is built into the browser and those date picker features have now been migrated into desktop browsers as well
 - JavaScript code is just adjusting the format of year, month and day
 
-[html code](./Ex_Files_Simplifying_Web_Development/06_05/index.html)
-[css code](./Ex_Files_Simplifying_Web_Development/06_05/style.css)
-[js code](./Ex_Files_Simplifying_Web_Development/06_05/script.js)
+[html code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Ex_Files_Simplifying_Web_Development/06_05/index.html)
+[css code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Ex_Files_Simplifying_Web_Development/06_05/style.css)
+[js code](/2023-01-26-SimplifyingWebDevelopmentWithAccessibilityBestPractices/Ex_Files_Simplifying_Web_Development/06_05/script.js)
+
+## Proof and Pudding
+
+### Simplifiying Web Development with Accessibility Best practices
+
+- Accessibility Mindtset
+
+  - What is the functionality of the thing I'm trying to build?
+  - What existing elements serve this functionality?
+
+- Component-based JavaScript front-endframeworks encourage us to build custom components to do what existing elements already do.
+- It's always a good idea, to check if the Web Platform, already gives what you need out of the box, and all you need to do is style it or add backwards compatibility.
+
+- Three key questions
+  - Is there an existing element that does what I need?
+  - Can I extend an existing element to do what I need?
+  - Can I use existing elements as part of my component?
+
+### Where to find more information
+
+- [MDN Web Docs HTML Elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- [A list apart](https://alistapart.com/)
+- [smashing magazine](https://www.smashingmagazine.com/)
+- [CSS Tricks](https://css-tricks.com/)
+
+### Tools for manually testing sites
+
+- Accessibiliy testing is central to successful web development, but it is not something we do naturally.
+  - get used to navigate ypour creations using your keyboard only
+  - screen reader
+  - Accesibility tools (Browsers)
+
+### Lighthouse score and similar
+
+- Use lighthouse accessibility test
